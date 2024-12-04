@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-trackingrequest-deployment
+  labels:
+    app: ms-trackingrequest-deployment
+spec:
+  selector:
+    matchLabels:
+      app: ms-trackingrequest-deployment
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ms-trackingrequest-deployment
+    spec:
+      containers:
+        - name: ms-trackingrequest
+          image: vicentearce/ms-trackingrequest
+          ports:
+            - containerPort: 8094
+          env:
+            - name: SERVER_PORT
+              value: "0"
